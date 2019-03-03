@@ -6,6 +6,10 @@ Multiple-Node Standalone Spark with R and Python
 * Created specific docker network (beacuse machines communicate unlimited from distributed ports within the docker network)
 ```docker network create spark_network```
 
+## Container Build Process
+* Change to  directory where you cloned this repo
+* Execute on docker shell or command line ```docker build -t matthiasde/rbspark .```
+
 ## Start the mutliple node cluster
 Run it in the cluster is documented in the spark docker manual above
 
