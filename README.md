@@ -12,7 +12,8 @@ The container is based on Alpine Linux.
 
 ## Container Build Process
 * Change to  directory where you cloned this repo
-* Execute on docker shell or command line ```docker build -t matthiasde/rbspark .```
+* Execute on docker shell or command line  
+```docker build -t matthiasde/rbspark .```
 
 ## Start the mutliple node cluster
 Run it in the cluster is documented in the spark docker manual above
@@ -26,3 +27,9 @@ docker run -d --net spark_network --name master -p 8080:8080 matthiasde/rbspark 
 ```
 docker run -d --net spark_network matthiasde/rbspark /opt/spark/sbin/start-slave.sh master:7077
 ```
+
+## Integration Test
+* Login to master node  
+```docker exec -it master sh```
+* Run the unit test with SparkR support on shell ```/opt #```  
+```Rscript --vanilla SparkExample.R```
