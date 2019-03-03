@@ -1,5 +1,9 @@
 # spark_standalone_docker
-Multiple-Node Standalone Spark with R and Python
+Multiple-Node Standalone Spark Container with R and Python 3 support.
+
+SparkR is included. How to use the SparkR integration can be viewed within the SparkExample.R.
+
+The container is based on Alpine Linux.
 
 ## Presumption
 * Installed Docker e.g. (Docker for Windows)
