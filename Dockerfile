@@ -1,5 +1,4 @@
 # "Dockerfile" with cap D without extension is standard name
-# Building with > docker build -t matthiasde/rbspark .
 
 #--- FROM is first command that give base image ---
 FROM alpine
@@ -43,21 +42,21 @@ RUN wget http://apache.mirror.digionline.de/spark/spark-$SPARK_VERSION/spark-$SP
     ln -s spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION spark
 ENV SPARK_HOME="/opt/spark"
 
+#--- Prerequisits for Python Module and R Package Installs
+#for R devtools; Python pyodbc: alpine-sdc (e.g. gcc g++)
+#for R devtools: R-dev
+#for Python pyodbc: python3-dev unixodbc unixodbc-dev
+RUN apk add alpine-sdk R-dev python3-dev unixodbc unixodbc-dev
+
 #--- Install Python Modules
 RUN pip3 install sqlalchemy		#for RB Pipeline
-#for pyodbc (not tested!)
-RUN apk add R-dev alpine-sdk
-#RUN apk add g++
 #RUN pip install pyodbc
 
 
 #--- Install R Packages
-#ADD resources/setup.R /tmp/setup.R
-#RUN Rscript --vanilla /tmp/setup.R
 #see https://stackoverflow.com/questions/31184918/installing-of-sparkr
-#install.packages("https://cran.r-project.org/src/contrib/Archive/SparkR/SparkR_2.3.0.tar.gz", repos = NULL, type="source")
 #some hints also on following page: https://gist.github.com/adgaudio/11312117
-# configure R with default mirror for package installs
+#configure R with default mirror for package installs
 #RUN echo 'options(repos=structure(c(CRAN="http://lib.stat.cmu.edu/R/CRAN/")))' >> ~/.Rprofile
 
 #RUN fp="/tmp/sparkR.$$"
@@ -86,9 +85,5 @@ EXPOSE 8080 8081
 COPY setup.R .
 RUN Rscript --vanilla ./setup.R
 
-#Install application specific scripts
+#Install application specific test script & SparkR unit test
 COPY SparkExample.R .
-
-#Run it in the cluster is documented in the spark docker manual above
-#docker run -d --net spark_network --name master -p 8080:8080 matthiasde/rbspark /opt/spark/sbin/start-master.sh
-#docker run -d --net spark_network matthiasde/rbspark /opt/spark/sbin/start-slave.sh master:7077
