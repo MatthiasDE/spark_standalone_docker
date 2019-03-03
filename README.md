@@ -22,7 +22,7 @@ Run it in the cluster is documented in the spark docker manual above
 docker run -d --net spark_network --name master -p 8080:8080 matthiasde/rbspark /opt/spark/sbin/start-master.sh
 ```
 
-### Slave Node
+### Worker Node (Slave)
 ```
 docker run -d --net spark_network matthiasde/rbspark /opt/spark/sbin/start-slave.sh master:7077
 ```
