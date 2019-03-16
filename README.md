@@ -10,7 +10,7 @@ The container is based on Alpine Linux.
 
 # Getting Started
 This short walkthrough is created for Windows users with Windows 10 Pro (Windows 10 Home will not work) to start single node container and to get first experience with Docker Images/Containers & SparkR. For multi node information see below.
-* Install ![Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
+* Install [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
 * Hit [Windows]+[R] and type ```powershell``` or ```cmd.exe``` [Enter] to open command line
 * Type ```docker pull matthiasde/rbspark``` [ENTER]
 * Wait until download is finished (>1 GB)
@@ -19,7 +19,7 @@ This short walkthrough is created for Windows users with Windows 10 Pro (Windows
 
 # Download an Build Process
 ## Download
-You can download the automatically crated Docker Image for running a Container via Docker Hub ![here](https://hub.docker.com/r/matthiasde/rbspark)
+You can download the automatically crated Docker Image for running a Container via [Docker Hub](https://hub.docker.com/r/matthiasde/rbspark)
 
 ## Container Build Process
 * Change to  directory where you cloned this repo with git
@@ -49,6 +49,10 @@ docker run -d --net spark_network matthiasde/rbspark /opt/spark/sbin/start-slave
 ```docker exec -it master sh```
 * Run the unit test with SparkR support on shell ```/opt #```  
 ```Rscript --vanilla SparkExample.R```
+
+# FAQ
+## Why is this image so huge?
+The Alpine Linux Distribution that is the base for the container image is quite small. Anyhow the target was to have a good basis for your Python and R programs to run, therefore beside Python and R, gcc and g++ including R sources are installed. That is done because dependencies from your programs should be solved by installing your OSS libraries via pip (Python) or install.packages (R).
 
 # License
 Even when the Github project for creation of this docker image with some example and test programs are licensed under the MIT please be aware - as with all Docker images - that resulting image also contain other software which may be under other licenses. This is explicitely valid for such components as R, Python etc. from the base Alpine distribution & Spark, along with any direct or indirect dependencies of the primary software being contained.
