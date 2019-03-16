@@ -2,6 +2,7 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/matthiasde/rbspark.svg)
 ![License](https://img.shields.io/github/license/MatthiasDE/spark_standalone_docker.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/matthiasde/rbspark.svg)
+![GitHub release](https://img.shields.io/github/release-pre/MatthiasDE/spark_standalone_docker.svg)
 
 # spark_standalone_docker
 Multiple-Node Standalone Spark Container with R and Python 3 support.
