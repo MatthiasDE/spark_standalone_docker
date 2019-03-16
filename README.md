@@ -1,5 +1,6 @@
+![Docker Build Status](https://img.shields.io/docker/cloud/build/matthiasde/rbspark.svg)
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/matthiasde/rbspark.svg)
 ![License](https://img.shields.io/github/license/MatthiasDE/spark_standalone_docker.svg)
-![Docker Build](https://img.shields.io/docker/cloud/build/matthiasde/rbspark.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/matthiasde/rbspark.svg)
 
 # spark_standalone_docker
