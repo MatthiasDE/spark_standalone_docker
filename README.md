@@ -9,7 +9,7 @@ SparkR is included. How to use the SparkR integration can be seen within the Spa
 The container is based on Alpine Linux.
 
 # Getting Started
-This short walkthrough is created for Windows users with Windows 10 Pro (Windows 10 Home will not work) to start single node container to get first experience with Docker Images/Containers & SparkR. For multi node information see below.
+This short walkthrough is created for Windows users with Windows 10 Pro (Windows 10 Home will not work) to start single node container and to get first experience with Docker Images/Containers & SparkR. For multi node information see below.
 * Install ![Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
 * Hit [Windows]+[R] and type ```powershell``` or ```cmd.exe``` [Enter] to open command line
 * Type ```docker pull matthiasde/rbspark``` [ENTER]
@@ -22,8 +22,8 @@ This short walkthrough is created for Windows users with Windows 10 Pro (Windows
 You can download the automatically crated Docker Image for running a Container via Docker Hub ![here](https://hub.docker.com/r/matthiasde/rbspark)
 
 ## Container Build Process
-* Change to  directory where you cloned with git this repo
-* Modify Dockerfile or setup.R as needed
+* Change to  directory where you cloned this repo with git
+* Modify Dockerfile (python libraries installation with pip & your program to copy) or setup.R (R package installation)  as needed
 * Execute on docker shell or command line / linux shell: 
 ```docker build -t matthiasde/rbspark .```
 
@@ -34,12 +34,12 @@ Before starting with commands below it is necessary that you created specific do
 Please create network with:
 ```docker network create spark_network```
 
-### Master Node
+### Master Node (Driver)
 ```
 docker run -d --net spark_network --name master -p 8080:8080 matthiasde/rbspark /opt/spark/sbin/start-master.sh
 ```
 
-### Worker Node (Slave)
+### Worker Node (Executor)
 ```
 docker run -d --net spark_network matthiasde/rbspark /opt/spark/sbin/start-slave.sh master:7077
 ```
