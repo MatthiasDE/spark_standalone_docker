@@ -4,34 +4,35 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/matthiasde/rbspark.svg)
 ![GitHub release](https://img.shields.io/github/release-pre/MatthiasDE/spark_standalone_docker.svg)
 
-Multiple-Node Standalone Spark Container with R and Python 3 support.
-SparkR is included. How to use the SparkR integration can be viewed within the SparkExample.R.
+Multiple-Node Standalone Spark Docker Image with R and Python 3 support.
+SparkR is included. How to use the SparkR integration can be seen within the SparkExample.R.
 The container is based on Alpine Linux.
 
 # Getting Started
-This short walkthrough is created for Windows Users with Windows 10 Pro (Windows 10 Home will not work)
-* Installed ![Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
+This short walkthrough is created for Windows users with Windows 10 Pro (Windows 10 Home will not work) to start single node container to get first experience with Docker Images/Containers & SparkR. For multi node information see below.
+* Install ![Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
 * Hit [Windows]+[R] and type ```powershell``` or ```cmd.exe``` [Enter] to open command line
 * Type ```docker pull matthiasde/rbspark``` [ENTER]
 * Wait until download is finished (>1 GB)
 * Start container from just downloaded image and enter shell: ```docker run -it --rm matthiasde/rbspark``` [ENTER]
-* Start the example R program: ```Rscript --vanilla SparkExample.R```
+* Start the example R program: ```Rscript --vanilla SparkExample.R``` [ENTER]
 
 # Download an Build Process
 ## Download
-You can download the automatically crated Docker Container via Docker Hub ![here](https://hub.docker.com/r/matthiasde/rbspark)
+You can download the automatically crated Docker Image for running a Container via Docker Hub ![here](https://hub.docker.com/r/matthiasde/rbspark)
 
 ## Container Build Process
 * Change to  directory where you cloned with git this repo
-* Execute on docker shell or command line  
+* Modify Dockerfile or setup.R as needed
+* Execute on docker shell or command line / linux shell: 
 ```docker build -t matthiasde/rbspark .```
 
 # Using the Container Image
 ## Start the mutliple node cluster
 Before starting with commands below it is necessary that you created specific docker network. This is necessary beacuse running containers communicate unlimited from distributed ports within the docker network.
 
-Please create network with: ```docker network create spark_network```
-
+Please create network with:
+```docker network create spark_network```
 
 ### Master Node
 ```
