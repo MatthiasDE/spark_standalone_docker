@@ -1,3 +1,7 @@
+![License](https://img.shields.io/github/license/MatthiasDE/spark_standalone_docker.svg)
+![Docker Build](https://img.shields.io/docker/cloud/build/matthiasde/rbspark.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/matthiasde/rbspark.svg)
+
 # spark_standalone_docker
 Multiple-Node Standalone Spark Container with R and Python 3 support.
 
@@ -10,25 +14,30 @@ The container is based on Alpine Linux.
 * Created specific docker network (beacuse machines communicate unlimited from distributed ports within the docker network)
 ```docker network create spark_network```
 
-## Container Build Process
+## Download an Build Process
+### Download
+You can download the automatically crated Docker Container via Docker Hub ![here](https://hub.docker.com/r/matthiasde/rbspark)
+
+### Container Build Process
 * Change to  directory where you cloned this repo
 * Execute on docker shell or command line  
 ```docker build -t matthiasde/rbspark .```
 
-## Start the mutliple node cluster
+## Using the Container Image
+### Start the mutliple node cluster
 Run it in the cluster is documented in the spark docker manual above
 
-### Master Node
+#### Master Node
 ```
 docker run -d --net spark_network --name master -p 8080:8080 matthiasde/rbspark /opt/spark/sbin/start-master.sh
 ```
 
-### Worker Node (Slave)
+#### Worker Node (Slave)
 ```
 docker run -d --net spark_network matthiasde/rbspark /opt/spark/sbin/start-slave.sh master:7077
 ```
 
-## Integration Test
+### Integration Test
 * Login to master node  
 ```docker exec -it master sh```
 * Run the unit test with SparkR support on shell ```/opt #```  
